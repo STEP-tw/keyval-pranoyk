@@ -73,6 +73,13 @@ describe("strict parser that is case sensitive",function(){
     })
   });
 
+  it("should throw error when specified keys are in lower case and actual is not",function(){
+    let kvParser=new StrictParser(["name"]);
+    assert.throws(()=>{
+      kvParser.parse("NAME=jayanth");
+    })
+  });
+
   it("should throw error when specified keys are in upper case and actual is not",function(){
     let kvParser=new StrictParser(["NAME"],true);
     assert.throws(()=>{
